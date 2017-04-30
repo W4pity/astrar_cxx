@@ -160,10 +160,10 @@ std::vector<std::vector<int>> Astar::Run(Node start, Node goal, std::vector<std:
 {
 
   std::vector<std::vector<std::tuple<int,int>>> map_debug;
-  for (int i = 0; i < 10; ++i)//column
+  for (int i = 0; i < map.size(); ++i)//column
   {
     map_debug.push_back(std::vector<std::tuple<int,int>>());
-    for (int j = 0; j < 10; ++j)//line
+    for (int j = 0; j < map[0].size(); ++j)//line
     {
         map_debug[i].push_back(std::make_tuple(0,0));
     }
