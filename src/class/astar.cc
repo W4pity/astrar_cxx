@@ -49,6 +49,7 @@ function construct_path(node)
 
 void Astar::display_map(std::vector<std::vector<std::tuple<int,int>>> map)
 {
+  return;// delete to debug
   for (int i = 0; i < 10; ++i)//column
   {
   
@@ -62,23 +63,24 @@ void Astar::display_map(std::vector<std::vector<std::tuple<int,int>>> map)
   std::cin.get();
 }
 
-std::vector<Node> Astar::construct_path(Node* g)
+std::vector<std::vector<int>> Astar::construct_path(Node* g)
 {
-  std::cout << g->parent;
+
   Node *tmp = g;
-  std::vector<Node> v;
+  std::vector<std::vector<int>> v;
   while (tmp)
   {
-    v.push_back(*tmp);
+    v.push_back(std::vector<int> {tmp->x, tmp->y});
     tmp = tmp->parent;
   }
 
   std::reverse(v.begin(),v.end());
-  for (int i = 0; i < v.size(); ++i)
+  /*for (int i = 0; i < v.size(); ++i)
   {
-    std::cout << "(" << v[i].x << v[i].y << ")";
+    std::cout << "(" << v[i][0] << v[i][1] << ")";
   }
   std::cout << std::endl;
+  */
   return v;
 }
 
@@ -145,6 +147,7 @@ int Astar::heuristic(Node s, Node g)
 
 void Astar::display_open(std::vector<Node> v)
 {
+  return; //delete to debug
   for (int i = 0; i < v.size(); ++i)
   {
     std::cout << "(" << v[i].x << "," << v[i].y << ")" ;
@@ -153,7 +156,7 @@ void Astar::display_open(std::vector<Node> v)
 }
 
 
-std::vector<Node> Astar::Run(Node start, Node goal, std::vector<std::vector<Node>> map)
+std::vector<std::vector<int>> Astar::Run(Node start, Node goal, std::vector<std::vector<Node>> map)
 {
 
   std::vector<std::vector<std::tuple<int,int>>> map_debug;
